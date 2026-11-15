@@ -4,5 +4,8 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/home/dmitry/kt2-devops/monitor.sh
+ExecStart=/usr/local/bin/monitor.sh
 User=root
+
+[Install]
+WantedBy=multi-user.target
