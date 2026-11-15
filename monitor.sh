@@ -20,7 +20,8 @@ if [ -n "$PID" ]; then
     echo "$PID" > "$PID_FILE"
 
     # 2. Стучимся на сервер мониторинга
-    curl -s -f -m 10 "$API_URL"
+     # Сохраняем HTTP-код ответа (добавлено по замечанию ML-инженера)
+    HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" -f -m 10 "$API_URL")
     
     # Если curl вернул ошибку (код возврата не 0)
     if [ $? -ne 0 ]; then
