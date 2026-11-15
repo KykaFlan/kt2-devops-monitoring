@@ -21,7 +21,7 @@ if [ -n "$PID" ]; then
 
     # 2. Стучимся на сервер мониторинга
      # Сохраняем HTTP-код ответа (добавлено по замечанию ML-инженера)
-    HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" -f -m 10 "$API_URL")
+    HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" -f -m 10 --max-filesize 1000000 "$API_URL")
     
     # Если curl вернул ошибку (код возврата не 0)
     if [ $? -ne 0 ]; then
